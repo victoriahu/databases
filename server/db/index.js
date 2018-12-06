@@ -10,7 +10,8 @@ var mySqlConnection = mysql.createConnection({
     host: 'localhost', 
     user: 'student', 
     password: 'student', 
-    database: 'chat'
+    database: 'chat',
+    multipleStatements: true
 });
 
 mySqlConnection.connect((err) => {

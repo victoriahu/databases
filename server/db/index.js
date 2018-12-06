@@ -7,17 +7,23 @@ var mysql = require('mysql');
 
 
 var mySqlConnection = mysql.createConnection({
-    host: 'localhost', 
+    // host: 'localhost', 
     user: 'student', 
     password: 'student', 
     database: 'chat',
     multipleStatements: true
 });
 
-mySqlConnection.connect((err) => {
+
+//passed in database as second argument
+mySqlConnection.connect((err, database) => {
     if (!err) {
         console.log('DB connection succeeded');
+        console.log(database);
     } else {
         console.log('DB connection failed: ' + JSON.stringify(err, undefined, 2));
     }
 })
+
+//inserted module exports, didn't do anything
+module.exports = mySqlConnection;

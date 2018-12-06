@@ -25,10 +25,10 @@ CREATE TABLE messages (
     REFERENCES users(id)
   /* Describe your table here.*/
 );
-
-CREATE PROCEDURE 'MessagesAdd' (
+/*
+CREATE PROCEDURE `MessagesAdd` (
   IN _messageid int,
-  IN _text varchar(255) NOT NULL, 
+  IN _text varchar(255), 
   IN _roomid int,
   IN _userid int
 )
@@ -48,6 +48,7 @@ BEGIN
 END IF;
   SELECT _messageid AS 'messageid';
 END
+*/
 /* Create other tables and define schemas for them here! */
 
 

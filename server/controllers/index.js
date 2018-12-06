@@ -14,7 +14,19 @@ module.exports = {
         }
       })
     }, // a function which handles a get request for all messages
-    post: function (req, res) {} // a function which handles posting a message to the database
+    post: function (req, res) {
+      //change from username later
+      var queryName = req.body;
+      mySqlConnection.query('INSERT queryName INTO messages', (error, result) => {
+        if (error) {
+          console.log("POST ERROR");
+          throw ('we r throwing error');
+        }
+        console.log("NO ERROR POST IS WORKING");
+        return;
+      })
+      res.end('yay');
+    } // a function which handles posting a message to the database
   },
 
   users: {

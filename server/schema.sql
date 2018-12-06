@@ -26,7 +26,28 @@ CREATE TABLE messages (
   /* Describe your table here.*/
 );
 
+CREATE PROCEDURE 'MessagesAdd' (
+  IN _messageid int,
+  IN _text varchar(255) NOT NULL, 
+  IN _roomid int,
+  IN _userid int
+)
+BEGIN 
+  IF _messageid = 0 THEN
+    INSERT INTO messages(text, roomid, userid) 
+    VALUES(_text, _roomid, _userid);
 
+    SET _messageid = LAST_INSERT_ID();
+  ELSE
+    UPDATE messages
+    SET
+    text = _text,
+    roomid = _roomid,
+    userid = _userid
+    WHERE messageid = _messageid;
+END IF;
+  SELECT _messageid AS 'messageid';
+END
 /* Create other tables and define schemas for them here! */
 
 

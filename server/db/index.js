@@ -19,7 +19,7 @@ var mySqlConnection = mysql.createConnection({
 mySqlConnection.connect((err, database) => {
     if (!err) {
         console.log('DB connection succeeded');
-        console.log(database);
+        // console.log(database);
     } else {
         console.log('DB connection failed: ' + JSON.stringify(err, undefined, 2));
     }

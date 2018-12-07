@@ -7,10 +7,12 @@ module.exports = {
   messages: {
     get: function (req, res) {
       mySqlConnection.query('SELECT * FROM messages', (err, rows, fields) => {
-        if (!err) {
-          console.log(rows);
-        } else {
+        if (err) {
           console.log(err);
+        } else {
+            console.log("ABLOOGA");
+            res.send(JSON.stringify(rows));
+
         }
       })
     }, // a function which handles a get request for all messages
@@ -47,7 +49,29 @@ module.exports = {
   
   users: {
     // Ditto as above
-    get: function (req, res) {},
-    post: function (req, res) {}
+    get: function (req, res) {
+      mySqlConnection.query('SELECT * from users', (err, rows, fields) => {
+        if (!err) {
+          console.log(rows);
+        } else {
+          console.log(err);
+        }
+      })
+    },
+    post: function (req, res) {
+      let usr = req.body;
+      console.log(usr);
+      var sql = "INSERT INTO users (username) VALUES (?)";
+
+      mySqlConnection.query(sql, [usr.username], (error, rows, fields) => {
+        if (!error) {
+          console.log(rows);
+          res.send(rows);
+        } else {
+          console.log("users is having an error", error);
+        }
+        res.end('yyay');
+      })
+    }
   }
 };

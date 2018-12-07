@@ -4,7 +4,7 @@ var db = require('../db');
 
 module.exports = {
   messages: {
-    get: function () {}, // a function which produces all the messages
+    get: function (cb) {}, // a function which produces all the messages
     post: function (req, res) {
       db.post('queryName', (error, result) => {
         if (error) {

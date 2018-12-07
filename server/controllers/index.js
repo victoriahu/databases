@@ -6,7 +6,8 @@ var mySqlConnection = require('../db');
 module.exports = {
   messages: {
     get: function (req, res) {
-      mySqlConnection.query('SELECT * FROM messages', (err, rows, fields) => {
+      mySqlConnection.query('SELECT m.messageid, m.text, m.userid, m.roomname \
+                              FROM messages m left outer join users on users.id = m.userid', (err, rows, fields) => {
         if (err) {
           console.log(err);
         } else {
